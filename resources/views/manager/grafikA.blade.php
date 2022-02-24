@@ -74,7 +74,7 @@
                 type: 'column'
             },
             title: {
-                text: 'Grafik Demand Kendaraan Kendaraan'
+                text: 'Grafik Demand Kendaraan'
             },
             subtitle: {
                 text: 'PT. Tambang Nikel'
