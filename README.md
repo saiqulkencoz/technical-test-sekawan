@@ -18,3 +18,7 @@
 - user : admin | email : admin@gmail.com | pass: test | manipulasi data kendaraan, request kendaraan, dan melihat grafik. cetak data pengajuan hanya bisa dilakukan admin
 - user : Manager A | email : mng_a@gmail.com | pass : test | Menyetujui Request pada tingkat 1 dan melihat grafik
 - user : Manager B | email : mng_b@gmail.com | pass : test | Menyetujui Request pada tingkat 2 dan melihat grafik. Request akan masuk pada user ini hanya ketika sudah disetujui tingkat 1.
+
+## Diagram
+
+![diagram](https://user-images.githubusercontent.com/63548313/155472745-86bd702c-edf7-4ac5-9e8f-291115d38b90.png)
