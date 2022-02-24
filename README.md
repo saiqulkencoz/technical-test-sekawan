@@ -9,7 +9,10 @@
 ## Cara Instalasi
 
 - Clone repositori menggunakan 'git clone https://github.com/saiqulkencoz/technical-test-sekawan.git'
-- Membuat database bernama 'app-test' lalu set username dan password untuk database | tertera pada .env
+- jalankan 'composer install' pada terminal pada direktori project
+- duplikat file .env.example lalu rename menjadi .env
+- Membuat database bernama 'app-test' atau bebas lalu set nama database yang dibuat tadi, username dan password untuk database pada .env (DB_DATABASE , DB_USERNAME, DB_PASSWORD)
+- jalankan 'php artisan key:generate'
 - Membuka terminal pada direktori project, lalu jalankan 'composer dump-autoload'
 - Melakukan migrasi tabel dan data seed dengan 'php artisan migrate:fresh --seed'
 - untuk menjalankan, ketikkan pada terminal 'php artisan serve' lalu bisa diakses secara default pada http://127.0.0.1:8080 atau biasanya muncul di terminal
