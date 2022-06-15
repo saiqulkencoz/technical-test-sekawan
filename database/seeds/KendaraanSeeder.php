@@ -15,6 +15,7 @@ class KendaraanSeeder extends Seeder
         [
             'nama' => 'Toyota Fuso L2',
             'jenis' => 'Barang',
+            'merek' => 'Toyota',
             'plat_id' => '1',
             'bbm' => '12,5',
             'jadwal_service' => '13/08/2022',
@@ -24,6 +25,7 @@ class KendaraanSeeder extends Seeder
         [
             'nama' => 'Mitsubishi Carry MX2',
             'jenis' => 'Barang',
+            'merek' => 'Mitsubishi',
             'plat_id' => '2',
             'bbm' => '13,4',
             'jadwal_service' => '17/05/2022',
@@ -33,6 +35,7 @@ class KendaraanSeeder extends Seeder
         [
             'nama' => 'Honda CR-V',
             'jenis' => 'Orang',
+            'merek' => 'Honda',
             'plat_id' => '3',
             'bbm' => '11,4',
             'jadwal_service' => '10/06/2022',
