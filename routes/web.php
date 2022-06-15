@@ -21,7 +21,7 @@ Route::post('/postlogin','AuthController@postlogin')->name('postlogin');
 Route::get('/logout','AuthController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth'],function(){
-    Route::get('/kendaraan','KendaraanController@index')->name('data-kendaraan');
+    Route::get('/plat','PlatController@index')->name('data-plat');
     
 
     Route::get('/kendaraan','KendaraanController@index')->name('data-kendaraan');

@@ -48,12 +48,12 @@
                                                 <td>{{ $data->acc_A }}</td>
                                                 <td>{{ $data->acc_B }}</td>
                                                 <td class="text-center">
-                                                    @if($data->acc_A=="Approved")
-                                                        <a href="/request-a/deny/{{ $data->id }}/deny"
+                                                    @if($data->acc_B=="Approved")
+                                                        <a href="/request-b/deny/{{ $data->id }}/deny"
                                                             class="btn btn-danger btn-sm"
                                                             onclick="return confirm('Anda Yakin ingin menolak?')">Deny</a>
                                                     @else
-                                                        <a href="/request-a/acc/{{ $data->id }}/approve"
+                                                        <a href="/request-b/acc/{{ $data->id }}/approve"
                                                             class="btn btn-success btn-sm"
                                                             onclick="return confirm('Apakah anda ingin menyetujui permintaan ini?')">Approve</a>
                                                     @endif
