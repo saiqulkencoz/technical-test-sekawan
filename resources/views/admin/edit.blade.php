@@ -14,6 +14,15 @@
                                     value="{{ $data_kendaraan->nama }}">
                             </div>
                             <div class="form-group">
+                                <label>Merek Kendaraan</label>
+                                <select class="form-control" name="merek" required>
+                                    <option value="Honda">Honda</option>
+                                    <option value="Mitsubishi">Mitsubishi</option>
+                                    <option value="Toyota">Toyota</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label>Jenis Angkutan</label>
                                 @if ($data_kendaraan->jenis == 'Barang')
                                     <select class="form-control" name="jenis">
@@ -29,8 +38,13 @@
                             </div>
                             <div class="form-group">
                                 <label>Nomor Polisi</label>
-                                <input class="form-control" type="text" name="nopol" placeholder="Masukkan Nomor Polisi"
-                                    value="{{ $data_kendaraan->nopol }}">
+                                <select class="form-control" name="plat_id" required>
+                                    <option value="{{ $data_kendaraan->plat->id }}">{{ $data_kendaraan->plat->nomor_kendaraan }}</option>
+                                    <option value="" disabled>=================================</option>
+                                    @foreach ($plat as $nopol)
+                                        <option value="{{ $nopol->id }}">{{ $nopol->nomor_kendaraan }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Konsumsi BBM</label>
@@ -39,10 +53,17 @@
                             </div>
                             <div class="form-group">
                                 <label>Jadwal Service</label>
-                                <input class="form-control" type="text" name="jadwal_service" placeholder="DD/MM/YYYY"
+                                <input type="text" name="jadwal_service" class="form-control" required autocomplete="off"
+                                    id="datepicker2" placeholder="Masukkan tanggal"
                                     value="{{ $data_kendaraan->jadwal_service }}">
+                                <script>
+                                    $('#datepicker2').datepicker({
+                                        format: 'dd/mm/yyyy',
+                                        todayHighlight: true
+                                    });
+                                </script>
                             </div>
-                            <div class="form-group">
+                            <div class=" form-group">
                                 <label>Hak Milik</label>
                                 @if ($data_kendaraan->hak_milik == 'Sendiri')
                                     <select class="form-control" name="hak_milik">

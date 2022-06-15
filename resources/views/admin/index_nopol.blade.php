@@ -21,44 +21,68 @@
                                 </div>
                             @endif
                             <div class="panel-body">
-                                {{-- <table class="table table-hover">
+                                <table class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Nama</th>
-                                            <th>Jenis Angkutan</th>
-                                            <th>Nomor Polisi</th>
-                                            <th>Konsumsi BBM</th>
-                                            <th>Jadwal Service</th>
-                                            <th>Hak Milik</th>
-                                            <th>Riwayat Pemakaian</th>
+                                            <th>Nomor Kendaraan</th>
                                             <th class="text-center">AKSI</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $i = 1; ?>
-                                        @foreach ($data_kendaraan as $kendaraan)
+                                        @foreach ($data_plat as $plat)
                                             <tr>
                                                 <td>{{ $i }}</td>
-                                                <td>{{ $kendaraan->nama }}</td>
-                                                <td>{{ $kendaraan->jenis }}</td>
-                                                <td>{{ $kendaraan->nopol }}</td>
-                                                <td>{{ $kendaraan->bbm }} KM/Liter</td>
-                                                <td>{{ $kendaraan->jadwal_service }}</td>
-                                                <td>{{ $kendaraan->hak_milik }}</td>
-                                                <td>{{ $kendaraan->riwayat_pemakaian }}</td>
+                                                <td>{{ $plat->nomor_kendaraan }}</td>
                                                 <td class="text-center">
-                                                    <a href="/kendaraan/{{ $kendaraan->id }}/edit"
-                                                        class="btn btn-warning btn-sm">EDIT</a>
-                                                    <a href="/kendaraan/{{ $kendaraan->id }}/delete"
-                                                        class="btn btn-danger btn-sm"
+                                                    <button type="button" class="btn cur-p btn-warning" data-toggle="modal"
+                                                        data-target="#edit_{{ $plat->id }}">EDIT</button>
+                                                    <a href="/plat/{{$plat->id}}/delete" class="btn btn-danger btn-sm"
                                                         onclick="return confirm('Anda Yakin ?')">DELETE</a>
+                                                    {{-- modal edit --}}
+                                                    <div class="modal fade" id="edit_{{ $plat->id }}" tabindex="-1"
+                                                        role="dialog" aria-labelledby="exampleModalLongTitle"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle">
+                                                                        Edit Data Nomor Kendaraan
+                                                                    </h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form action="/plat/{{ $plat->id }}/update"
+                                                                        method="post">
+                                                                        {{ csrf_field() }}
+                                                                        <div class="form-group">
+                                                                            <label>Nomor Kendaraan</label>
+                                                                            <input class="form-control" type="text"
+                                                                                name="nomor_kendaraan"
+                                                                                placeholder="Masukkan Nomor Kendaraan"
+                                                                                required value="{{$plat->nomor_kendaraan}}">
+                                                                        </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Simpan</button>
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Close</button>
+                                                                </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             <?php $i++; ?>
                                         @endforeach
                                     </tbody>
-                                </table> --}}
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -78,42 +102,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('add-kendaraan') }}" method="POST">
+                    <form action="{{ route('add-nopol') }}" method="POST">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label>Nama Kendaraan</label>
-                            <input class="form-control" type="text" name="nama" placeholder="Masukkan Nama Kendaraan">
-                        </div>
-                        <div class="form-group">
-                            <label>Jenis Angkutan</label>
-                            <select class="form-control" name="jenis">
-                                <option value="Barang" selected>Barang</option>
-                                <option value="Orang">Orang</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Nomor Polisi</label>
-                            <input class="form-control" type="text" name="nopol" placeholder="Masukkan Nomor Polisi">
-                        </div>
-                        <div class="form-group">
-                            <label>Konsumsi BBM</label>
-                            <input class="form-control" type="text" name="bbm" placeholder="KM/L">
-                        </div>
-                        <div class="form-group">
-                            <label>Jadwal Service</label>
-                            <input class="form-control" type="text" name="jadwal_service" placeholder="DD/MM/YYYY">
-                        </div>
-                        <div class="form-group">
-                            <label>Hak Milik</label>
-                            <select class="form-control" name="hak_milik">
-                                <option value="Sendiri" selected>Sendiri</option>
-                                <option value="Sewa PT. A">Sewa PT. A</option>
-                                <option value="Sewa PT. B">Sewa PT. B</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Riwayat Pemakaian</label>
-                            <input class="form-control" type="text" name="riwayat_pemakaian" placeholder="...">
+                            <label>Nomor Kendaraan</label>
+                            <input class="form-control" type="text" name="nomor_kendaraan"
+                                placeholder="Masukkan Nomor Kendaraan" required>
                         </div>
                 </div>
                 <div class="modal-footer">

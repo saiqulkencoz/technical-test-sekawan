@@ -11,10 +11,13 @@ class Kendaraan extends Model
     protected $appends = ['pemakaian'];
 
     protected $fillable = [
-        'nama','jenis','nopol','bbm','jadwal_service','hak_milik','riwayat_pemakaian'
+        'nama','jenis','merek','plat_id','bbm','jadwal_service','hak_milik','riwayat_pemakaian'
     ];
 
     public function pengajuan(){
         return $this->hasMany(Pengajuan::class);
+    }
+    public function plat(){
+        return $this->belongsTo(Plat::class);
     }
 }

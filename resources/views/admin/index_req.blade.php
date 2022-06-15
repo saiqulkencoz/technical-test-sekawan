@@ -42,7 +42,7 @@
                                                 <td>{{ $i }}</td>
                                                 <td>{{ $data->nama_pegawai }}</td>
                                                 <td>{{ $data->kendaraan->nama }}</td>
-                                                <td>{{ $data->kendaraan->nopol }}</td>
+                                                <td>{{ $data->kendaraan->plat->nomor_kendaraan }}</td>
                                                 <td>{{ $data->kendaraan->hak_milik }}</td>
                                                 <td>{{ $data->rincian }}</td>
                                                 <td>{{ $data->acc_A }}</td>

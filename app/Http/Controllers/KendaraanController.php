@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use \App\Kendaraan;
+use \App\Plat;
 use Illuminate\Http\Request;
 
 class KendaraanController extends Controller
@@ -14,15 +15,18 @@ class KendaraanController extends Controller
         else{
             $data_kendaraan = Kendaraan::all();
         }
-        return view('admin.index',['data_kendaraan' => $data_kendaraan]);
+        $plat = Plat::all();
+        return view('admin.index',['data_kendaraan' => $data_kendaraan],['plat' => $plat]);
     }
     public function create(Request $request){
+        // dd($request->all());
         Kendaraan::create($request->all());
         return redirect()->route('data-kendaraan')->with('Sukses','Data Berhasil Diinput');
     }
     public function update_index($id){
         $data_kendaraan = Kendaraan::find($id);
-        return view('admin.edit',['data_kendaraan' => $data_kendaraan]);
+        $plat = Plat::all();
+        return view('admin.edit',['data_kendaraan' => $data_kendaraan],['plat' => $plat]);
     }
     public function update(Request $request,$id){
         $data_kendaraan = Kendaraan::find($id);

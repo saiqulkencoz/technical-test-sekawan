@@ -12,32 +12,33 @@ class KendaraanSeeder extends Seeder
     public function run()
     {
         DB::table('kendaraan')->insert([
-            [
-            'nama' => 'Honda Fuso XT2',
+        [
+            'nama' => 'Toyota Fuso L2',
             'jenis' => 'Barang',
-            'nopol' => 'N 1955 HG',
-            'bbm' => '11,5',
+            'plat_id' => '1',
+            'bbm' => '12,5',
             'jadwal_service' => '13/08/2022',
-            'hak_milik' => 'Sendiri',
+            'hak_milik' => 'Sewa PT. B',
             'riwayat_pemakaian' => 'Baik'
         ],
         [
             'nama' => 'Mitsubishi Carry MX2',
             'jenis' => 'Barang',
-            'nopol' => 'N 8765 GF',
+            'plat_id' => '2',
             'bbm' => '13,4',
-            'jadwal_service' => '13/08/2022',
+            'jadwal_service' => '17/05/2022',
             'hak_milik' => 'Sewa PT. A',
             'riwayat_pemakaian' => 'Baik'
         ],
         [
-            'nama' => 'Toyota Fuso L2',
-            'jenis' => 'Barang',
-            'nopol' => 'N 8724 R',
-            'bbm' => '12,5',
-            'jadwal_service' => '13/08/2022',
-            'hak_milik' => 'Sewa PT. B',
+            'nama' => 'Honda CR-V',
+            'jenis' => 'Orang',
+            'plat_id' => '3',
+            'bbm' => '11,4',
+            'jadwal_service' => '10/06/2022',
+            'hak_milik' => 'Sendiri',
             'riwayat_pemakaian' => 'Baik'
-        ]]);
+        ],
+    ]);
     }
 }

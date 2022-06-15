@@ -22,7 +22,9 @@ Route::get('/logout','AuthController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth'],function(){
     Route::get('/plat','PlatController@index')->name('data-plat');
-    
+    Route::post('/plat/create','PlatController@create')->name('add-nopol');
+    Route::post('/plat/{id}/update','PlatController@update');
+    Route::get('/plat/{id}/delete','PlatController@delete');
 
     Route::get('/kendaraan','KendaraanController@index')->name('data-kendaraan');
     Route::post('/kendaraan/create','KendaraanController@create')->name('add-kendaraan');

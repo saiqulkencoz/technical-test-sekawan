@@ -26,6 +26,7 @@
                                         <tr>
                                             <th>No.</th>
                                             <th>Nama</th>
+                                            <th>Merek</th>
                                             <th>Jenis Angkutan</th>
                                             <th>Nomor Polisi</th>
                                             <th>Konsumsi BBM</th>
@@ -41,8 +42,9 @@
                                             <tr>
                                                 <td>{{ $i }}</td>
                                                 <td>{{ $kendaraan->nama }}</td>
+                                                <td>{{ $kendaraan->merek }}</td>
                                                 <td>{{ $kendaraan->jenis }}</td>
-                                                <td>{{ $kendaraan->nopol }}</td>
+                                                <td>{{ $kendaraan->plat->nomor_kendaraan }}</td>
                                                 <td>{{ $kendaraan->bbm }} KM/Liter</td>
                                                 <td>{{ $kendaraan->jadwal_service }}</td>
                                                 <td>{{ $kendaraan->hak_milik }}</td>
@@ -82,30 +84,50 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label>Nama Kendaraan</label>
-                            <input class="form-control" type="text" name="nama" placeholder="Masukkan Nama Kendaraan">
+                            <input class="form-control" type="text" name="nama" placeholder="Masukkan Nama Kendaraan" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Merek Kendaraan</label>
+                            <select class="form-control" name="merek" required>
+                                <option value="Honda">Honda</option>
+                                <option value="Mitsubishi">Mitsubishi</option>
+                                <option value="Toyota">Toyota</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Jenis Angkutan</label>
-                            <select class="form-control" name="jenis">
+                            <select class="form-control" name="jenis" required>
                                 <option value="Barang" selected>Barang</option>
                                 <option value="Orang">Orang</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Nomor Polisi</label>
-                            <input class="form-control" type="text" name="nopol" placeholder="Masukkan Nomor Polisi">
+                            <select class="form-control" name="plat_id" required>
+                                @foreach ($plat as $nopol)
+                                    <option value="{{ $nopol->id }}">{{ $nopol->nomor_kendaraan }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Konsumsi BBM</label>
-                            <input class="form-control" type="text" name="bbm" placeholder="KM/L">
+                            <input class="form-control" type="text" name="bbm" placeholder="KM/L" required>
                         </div>
                         <div class="form-group">
                             <label>Jadwal Service</label>
-                            <input class="form-control" type="text" name="jadwal_service" placeholder="DD/MM/YYYY">
+                            <input type="text" name="jadwal_service" class="form-control" required autocomplete="off"
+                                id="datepicker2" placeholder="Masukkan tanggal">
+                            <script>
+                                $('#datepicker2').datepicker({
+                                    format: 'dd/mm/yyyy',
+                                    todayHighlight: true
+                                });
+                            </script>
                         </div>
                         <div class="form-group">
                             <label>Hak Milik</label>
-                            <select class="form-control" name="hak_milik">
+                            <select class="form-control" name="hak_milik" required>
                                 <option value="Sendiri" selected>Sendiri</option>
                                 <option value="Sewa PT. A">Sewa PT. A</option>
                                 <option value="Sewa PT. B">Sewa PT. B</option>
@@ -113,7 +135,7 @@
                         </div>
                         <div class="form-group">
                             <label>Riwayat Pemakaian</label>
-                            <input class="form-control" type="text" name="riwayat_pemakaian" placeholder="...">
+                            <input class="form-control" type="text" name="riwayat_pemakaian" placeholder="..." required>
                         </div>
                 </div>
                 <div class="modal-footer">
