@@ -22,6 +22,9 @@ Route::get('/logout','AuthController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth'],function(){
     Route::get('/kendaraan','KendaraanController@index')->name('data-kendaraan');
+    
+
+    Route::get('/kendaraan','KendaraanController@index')->name('data-kendaraan');
     Route::post('/kendaraan/create','KendaraanController@create')->name('add-kendaraan');
     Route::get('/kendaraan/{id}/edit','KendaraanController@update_index');
     Route::post('/kendaraan/{id}/update','KendaraanController@update');
